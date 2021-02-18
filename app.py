@@ -5,5 +5,5 @@ app = Flask('factorioseeds')
 
 @app.route("/")
 def hello():
-        return "Hello, World!"
+        return "Hello there, World!"
 

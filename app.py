@@ -2,14 +2,16 @@
 import os
 import random
 
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask('factorioseeds')
 
-greetings = os.environ['greetings'].split(',')
-
+if 'greetings' in os.environ:
+    greetings = os.environ['greetings'].split(',')
+else:
+    greetings = ['Hello', 'Hi', 'Boop']
 
 @app.route("/")
 def hello():
-        return "{}, World!".format(random.choice(greetings))
+        return render_template('index.html', greeting=random.choice(greetings))
 
